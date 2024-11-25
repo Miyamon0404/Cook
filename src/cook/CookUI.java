@@ -103,8 +103,15 @@ public class CookUI {
 	//最適なメニューを探索する
 	public void searchOptimalMenu() {
 		System.out.println("目標とする栄養素を入力してください");
-		
-		this.menumatcher = new MenuMatcher(ingredientDatabase, 0, 0, 0);
+		Scanner scan = new Scanner(System.in);
+		System.out.println("タンパク質の量(g):");
+		double protein = scan.nextDouble();      	// タンパク質の量
+		System.out.println("脂質の量(g):");
+		double lipids = scan.nextDouble();		 	// 脂質の量
+		System.out.println("炭水化物の量(g):");
+	    double carbohydrates= scan.nextDouble();	// 炭水化物の量
+	    System.out.println("探索を開始します。");
+		this.menumatcher = new MenuMatcher(ingredientDatabase, protein, lipids, carbohydrates);
 		menumatcher.findOptimalMenuBFS(menus);
 	}
 	
